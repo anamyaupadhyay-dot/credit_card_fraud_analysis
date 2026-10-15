@@ -27,7 +27,7 @@ Analyzed credit card transaction data using MySQL and Excel to understand transa
 
 ## Files Included
 - `Credit_Card_Fraud_analysis_Portfolio.xlsx` – Excel analysis workbook.
-- `Credit_Card_fraud_analysis SQL queries(1).txt` – MySQL queries and analysis.
+- `Credit_Card_fraud_analysis SQL queries – MySQL queries and analysis.
 
 ## Skills Demonstrated
 SQL aggregation, `GROUP BY`, `ORDER BY`, `COUNT()`, `SUM()`, `AVG()`, date functions, fraud analysis, and analytical thinking.
