@@ -2,6 +2,7 @@
 
 End-to-end fraud analysis of **42,308 credit card transactions (December 2019)** using **Excel, MySQL and Power BI**. The project finds where, when and against whom fraud happens, and turns the findings into a four-page interactive dashboard with recommendations for a fraud risk team.
 
+
 ## Business Problem
 
 Fraud is less than 0.5% of all transactions, so it is almost impossible to spot by reading raw data. A fraud risk team needs one clear view of the size of the problem, the highest-risk segments, and the times when fraud is most likely, so it can prioritise controls and reduce losses.
@@ -11,14 +12,14 @@ Fraud is less than 0.5% of all transactions, so it is almost impossible to spot 
 - Measure the size of the fraud problem (count, value and rate)
 - Identify the highest-risk merchant categories, states and customer segments
 - Find when fraud happens (time of day and day of week)
-- Build a self-service Power BI dashboard connected to a MySQL database
+- Build an interactive Power BI dashboard
 - Recommend actions backed by the data
 
 ## Tools and Skills
 
 | Tool | Used for |
 |---|---|
-| Excel | Data cleaning, descriptive statistics, histogram, pivot-style analysis, charts |
+| Excel | Data cleaning, descriptive statistics, histogram, fraud by category and gender, top 10 states, charts |
 | MySQL Workbench | Table design, data loading, KPI and segmentation queries |
 | Power BI | Data modelling, DAX measures and columns, slicers, page navigation, dashboard design |
 | Business analysis | Business Requirements Document (BRD), KPIs, insights and recommendations |
@@ -59,7 +60,7 @@ Transactions are identified by `trans_num`.
 1. Add step-up verification (one-time password or 3-D Secure) for transactions of 200 or more, especially 500 or more.
 2. Apply stricter checks on `shopping_net`, `misc_net` and `grocery_pos` transactions.
 3. Raise monitoring and alert thresholds between 6 PM and 6 AM.
-4. Send targeted customer alerts to cardholders aged 65+ and under 26.
+4. Consider targeted customer alerts for cardholders aged 65+ and under 26, whose fraud rates are slightly above average.
 5. Review high-rate states and merchants monthly, using counts together with rates.
 6. Keep full card numbers in future data extracts so card-level analysis is possible.
 
@@ -72,13 +73,11 @@ Transactions are identified by `trans_num`.
 | 3. Who and When? | Fraud by age group, gender, time of day and day of week |
 | 4. Insights and Recommendations | Key findings and recommended actions |
 
-Slicers for category, state, gender and age group.
-
 ## Power BI Model Highlights
 
-**Calculated columns:** Fraud Flag, Age (at transaction date), Age Group, Time Band, Day Name, Amount Band, Fraud Label.
+**Columns created (examples):** Fraud Flag, Age (at transaction date), Age Group, Time Band.
 
-**Core measures:**
+**Core measures (examples):**
 
 ```DAX
 Total Transactions = COUNTROWS ( cc_data )
@@ -108,6 +107,7 @@ ORDER BY fraud_rate_pct DESC;
 ```
 
 All scripts are in the `03_SQL` folder.
+```
 
 ## How to Reproduce
 
